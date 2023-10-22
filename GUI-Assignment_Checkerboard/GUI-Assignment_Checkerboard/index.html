@@ -131,19 +131,25 @@ $.extend({
 			<!-- Checkerboard JavaScript -->
 			<script>
 				const BOARD_SIZE = parseInt(new URLSearchParams(window.location.search).get('size')) || 8;
-				const checkerboard = document.getElementById('checkerboard');
-				checkerboard.style.gridTemplateColumns = `repeat(${BOARD_SIZE}, 1fr)`;
-				checkerboard.style.gridTemplateRows = `repeat(${BOARD_SIZE}, 1fr)`;
+const checkerboard = document.getElementById('checkerboard');
+checkerboard.style.gridTemplateColumns = `repeat(${BOARD_SIZE}, 1fr)`;
+checkerboard.style.gridTemplateRows = `repeat(${BOARD_SIZE}, 1fr)`;
 
-				for (let i = 0; i < BOARD_SIZE * BOARD_SIZE; i++) {
-					const square = document.createElement('div');
-					if ((Math.floor(i / BOARD_SIZE) + i) % 2 === 0) {
-						square.style.backgroundColor = 'white';
-					} else {
-						square.style.backgroundColor = 'black';
-					}
-					checkerboard.appendChild(square);
-				}
+for (let i = 0; i < BOARD_SIZE * BOARD_SIZE; i++) {
+    const square = document.createElement('div');
+    if ((Math.floor(i / BOARD_SIZE) + i) % 2 === 0) {
+        square.style.backgroundColor = 'white';
+    } else {
+        square.style.backgroundColor = 'black';
+        // Add checker pieces for demonstration
+        if (i < BOARD_SIZE * 3) {
+            square.classList.add(i % 2 === 0 ? 'black-piece' : 'red-piece');
+        } else if (i > BOARD_SIZE * 4) {
+            square.classList.add(i % 2 === 0 ? 'red-piece' : 'black-piece');
+        }
+    }
+    checkerboard.appendChild(square);
+}
 			</script>
 		</td>
 	</tr>

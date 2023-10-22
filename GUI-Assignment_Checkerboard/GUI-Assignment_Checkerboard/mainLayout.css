@@ -13,3 +13,23 @@
 #content{
 	background-color:gray;
 }
+
+.red-piece {
+    background-image: url('graphics/red-piece.png');
+    background-size: cover;
+}
+
+.black-piece {
+    background-image: url('graphics/black-piece.png');
+    background-size: cover;
+}
+
+.red-king {
+    background-image: url('graphics/red-king.png');
+    background-size: cover;
+}
+
+.black-king {
+    background-image: url('graphics/black-king.png');
+    background-size: cover;
+}
