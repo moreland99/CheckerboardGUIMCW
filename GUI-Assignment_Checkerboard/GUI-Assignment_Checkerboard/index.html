@@ -13,6 +13,15 @@
 <!-- Load style sheets -->
 <link rel="stylesheet" type="text/css" href="mainLayout.css" />
 
+<!-- Checkerboard styles -->
+<style>
+    #checkerboard {
+        width: 400px;
+        height: 400px;
+        display: grid;
+    }
+</style>
+
 <!-- Load any supplemental Javascript libraries here -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="checker.js"></script>
@@ -116,6 +125,26 @@ $.extend({
 
 		<td id="content">
 			<!-- Your code here -->
+			<!-- Checkerboard div -->
+			<div id="checkerboard"></div>
+			
+			<!-- Checkerboard JavaScript -->
+			<script>
+				const BOARD_SIZE = parseInt(new URLSearchParams(window.location.search).get('size')) || 8;
+				const checkerboard = document.getElementById('checkerboard');
+				checkerboard.style.gridTemplateColumns = `repeat(${BOARD_SIZE}, 1fr)`;
+				checkerboard.style.gridTemplateRows = `repeat(${BOARD_SIZE}, 1fr)`;
+
+				for (let i = 0; i < BOARD_SIZE * BOARD_SIZE; i++) {
+					const square = document.createElement('div');
+					if ((Math.floor(i / BOARD_SIZE) + i) % 2 === 0) {
+						square.style.backgroundColor = 'white';
+					} else {
+						square.style.backgroundColor = 'black';
+					}
+					checkerboard.appendChild(square);
+				}
+			</script>
 		</td>
 	</tr>
 	
